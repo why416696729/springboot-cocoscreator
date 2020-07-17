@@ -1,0 +1,36 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mygame?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+#    url: jdbc:mysql://39.108.251.128:3306/mygame?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf-8
+#    username: root
+#    password: root
+#    url: jdbc:sqlite:E:/酷Q Air/app/me.cqp.why.myj3/myj3.db
+#    url: jdbc:sqlite:C:/Users/Administrator/Desktop/酷Q Air/app/me.cqp.why.myj3/myj3.db
+#    username:
+#    password:
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    defaultEnumTypeHandler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+jpa:
+  show-sql: true
+
+##jwt配置
+audience:
+  # 代表这个JWT的接收对象,存入audience
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  # 密钥, 经过Base64加密, 可自行替换
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  # JWT的签发主体，存入issuer
+  name: restapiuser
+  # 过期时间，时间戳
+  expiresSecond: 172800

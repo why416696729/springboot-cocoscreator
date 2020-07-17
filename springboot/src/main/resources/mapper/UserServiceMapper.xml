@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuwhy.whytest.Dao.UserMapper">
+
+    <select id="Screen" resultType="com.wuwhy.whytest.Dto.UserDto" >
+        select user_name userName,password,telephone,email
+         from sys_user where STR_TO_DATE(create_date,'%Y-%m-%d %H:%i:%s') &lt; #{date}
+    </select>
+
+    <select id="Between" resultType="com.wuwhy.whytest.Dto.UserDto" >
+        select user_name userName,password,telephone,email from sys_user where
+        <if test="StratDate != null and EndDate != null">create_date between #{StratDate} and #{EndDate}</if>
+        <if test="StratDate != null and EndDate == null">STR_TO_DATE(create_date,'%Y-%m-%d %H:%i:%s') &gt; #{StratDate}</if>
+        <if test="StratDate == null and EndDate != null">STR_TO_DATE(create_date,'%Y-%m-%d %H:%i:%s') &lt; #{EndDate}</if>
+    </select>
+
+</mapper>
